@@ -44,7 +44,7 @@ const ChatWindow: React.FC = () => {
   // If no contact is selected, display a message
   if (!selectedContact) {
     return (
-      <div className="flex items-center justify-center mx-auto h-full text-gray-500">
+      <div className="flex items-center justify-center mx-auto m-3 text-center h-full text-gray-500">
         Select a contact to chat.
       </div>
     );
@@ -52,12 +52,12 @@ const ChatWindow: React.FC = () => {
 
   return (
     <div className="flex flex-col flex-1">
-      <div className="p-2 bg-gray-200 border-b">
-        <h2>{selectedContact.name}</h2>
+      <div className="p-4 bg-green-300 border-b">
+        <h2 className="text-2xl font-bold">{selectedContact.name}</h2>
       </div>
 
       {/* Display messages */}
-      <div className="flex-1 overflow-y-auto">
+      <div className="flex-1">
         {isLoading ? (
           <div className="p-2 text-gray-500">Loading messages...</div>
         ) : error ? (

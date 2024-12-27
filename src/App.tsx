@@ -6,7 +6,7 @@ import store from "./store/store";
 const App = () => {
   return (
     <Provider store={store}>
-      <div className="flex h-screen">
+      <div className="flex h-screen w-screen overflow-hidden">
         <ContactList />
         <ChatWindow />
       </div>

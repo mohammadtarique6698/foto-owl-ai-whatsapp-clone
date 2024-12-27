@@ -64,8 +64,9 @@ const ContactList: React.FC = () => {
   };
 
   return (
-    <div className="w-64 bg-gray-100 p-4 relative">
-      <h2 className="text-xl font-semibold">Contacts</h2>
+    <div className="w-auto bg-gray-100 p-4 relative">
+      <h2 className="text-lg text-green-500 font-bold mb-4">ChattyApp</h2>
+      <h2 className="text-xl text-green-500 font-semibold">All Contacts</h2>
       <ul className="mt-4">
         {contacts.length === 0 ? (
           <div>No contacts available</div>
@@ -74,7 +75,7 @@ const ContactList: React.FC = () => {
             <li
               key={contact.id}
               onClick={() => handleSelectContact(contact)}
-              className={`p-2 cursor-pointer rounded ${
+              className={`p-2 text-lg font-semibold cursor-pointer rounded ${
                 selectedContact?.id === contact.id
                   ? "bg-blue-200"
                   : "hover:bg-gray-200"
@@ -86,10 +87,10 @@ const ContactList: React.FC = () => {
         )}
       </ul>
       <button
-        className="absolute bottom-4 left-2 bg-blue-500 text-white px-4 py-2 rounded-md"
+        className="absolute bottom-4 left-2 bg-blue-500 text-white px-4 py-2 rounded-md m-1 mr-3"
         onClick={handleAddContact}
       >
-        Add Contact
+        + Add Contact
       </button>
     </div>
   );
