@@ -1,9 +1,12 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+// Import necessary types
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedContact, setContacts } from "../actions/action";
+import { AppDispatch, AppState } from "../store/store"; // import the typed AppDispatch
+import { Contact } from "./types"; // Assuming you have a Contact type defined
 import { init, i, id } from "@instantdb/react";
 
+// Initialize database connection
 const db = init({
   appId: "ce93dbf4-4ca5-43c0-86d7-bf2492cce344",
   schema: i.schema({
@@ -17,9 +20,11 @@ const db = init({
 });
 
 const ContactList: React.FC = () => {
-  const dispatch = useDispatch();
-  const contacts = useSelector((state: any) => state.contacts);
-  const selectedContact = useSelector((state: any) => state.selectedContact);
+  const dispatch = useDispatch<AppDispatch>(); // Use the typed dispatch
+  const contacts = useSelector((state: AppState) => state.contacts); // Properly typed state
+  const selectedContact = useSelector(
+    (state: AppState) => state.selectedContact
+  );
 
   const { data, error } = db.useQuery({
     contacts: {},
@@ -28,7 +33,7 @@ const ContactList: React.FC = () => {
   React.useEffect(() => {
     if (data?.contacts) {
       console.log("Fetched contacts from the database:", data.contacts);
-      dispatch(setContacts(data.contacts));
+      dispatch(setContacts(data.contacts)); // dispatch correctly typed action
     }
     if (error) {
       console.error("Error fetching contacts from the database:", error);
@@ -36,8 +41,8 @@ const ContactList: React.FC = () => {
   }, [data, error, dispatch]);
 
   // Handle selecting a contact
-  const handleSelectContact = (contact: any) => {
-    dispatch(setSelectedContact(contact));
+  const handleSelectContact = (contact: Contact) => {
+    dispatch(setSelectedContact(contact)); // dispatch correctly typed action
   };
 
   // Handle adding a new contact
@@ -65,7 +70,7 @@ const ContactList: React.FC = () => {
         {contacts.length === 0 ? (
           <div>No contacts available</div>
         ) : (
-          contacts.map((contact: any) => (
+          contacts.map((contact: Contact) => (
             <li
               key={contact.id}
               onClick={() => handleSelectContact(contact)}

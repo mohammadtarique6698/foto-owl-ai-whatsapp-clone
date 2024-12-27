@@ -9,15 +9,16 @@ import {
   SetSelectedContactAction,
   AddMessageAction,
   SetMessagesAction,
+  Contact,
 } from "../actions/action";
 
-interface AppState {
-  contacts: string[];
-  selectedContact: string | null;
+export interface AppState {
+  contacts: Contact[];
+  selectedContact: Contact | null;
   messages: Record<string, string[]>;
 }
 
-type Action =
+export type Action =
   | SetContactsAction
   | SetSelectedContactAction
   | AddMessageAction
