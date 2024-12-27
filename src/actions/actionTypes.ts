@@ -1,0 +1,4 @@
+export const SET_CONTACTS = "SET_CONTACTS";
+export const SET_SELECTED_CONTACT = "SET_SELECTED_CONTACT";
+export const ADD_MESSAGE = "ADD_MESSAGE";
+export const SET_MESSAGES = "SET_MESSAGES";
