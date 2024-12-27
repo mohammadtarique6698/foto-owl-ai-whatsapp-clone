@@ -22,7 +22,7 @@ const db = init({
 export const fetchContacts = async () => {
   try {
     const { data } = db.useQuery({ contacts: {} });
-    return data.contacts || [];
+    return data?.contacts || [];
   } catch (error) {
     console.error("Error fetching contacts:", error);
     return [];
@@ -33,7 +33,7 @@ export const fetchContacts = async () => {
 export const fetchMessages = async () => {
   try {
     const { data } = db.useQuery({ messages: {} });
-    return data.messages || {};
+    return data?.messages || {};
   } catch (error) {
     console.error("Error fetching messages:", error);
     return {};
